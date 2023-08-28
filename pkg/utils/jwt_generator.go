@@ -6,38 +6,36 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"time"
 	"strings"
-
-	"github.com/golang-jwt/jwt/v5"
+	"time"
 )
 
 type Tokens struct {
-	Access string
+	Access  string
 	Refresh string
 }
 
-func GenerateNewTokens(id string, credentials []string) (*Tokens, error){
-	accessToken, err := generateAccessToken(id, credentials)
-	if err 1= nil {
+func GenerateNewTokens(id string, credentials []string) (*Tokens, error) {
+	accessToken, err := generateNewAccessToken(id, credentials)
+	if err != nil {
 		return nil, err
 	}
 
-	refreshToken, err := generateRefreshToken()
+	refreshToken, err := generateNewRefreshToken()
 	if err != nil {
 		return nil, err
 	}
 
 	return &Tokens{
-		Access: accessToken,
+		Access:  accessToken,
 		Refresh: refreshToken,
 	}, nil
 }
 
-func generateNewAccessToken(id string, credentials []string) (string, error){
+func generateNewAccessToken(id string, credentials []string) (string, error) {
 	secret := os.Getenv("JWT_SECRET")
 
-	minutesCount, _ :=strconv.Atoi(os.Getenv("JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT"))
+	minutesCount, _ := strconv.Atoi(os.Getenv("JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT"))
 
 	claims := jwt.MapClaims{}
 
