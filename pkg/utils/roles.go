@@ -1,8 +1,8 @@
 package utils
 
 import (
+	"dailyplan-api/pkg/repository"
 	"fmt"
-	"github.com/danielr0d/dailyplan-api/pkg/repository"
 )
 
 func VerifyRole(role string) (string, error) {
