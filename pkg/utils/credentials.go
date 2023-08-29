@@ -1,8 +1,8 @@
 package utils
 
 import (
+	"dailyplan-api/pkg/repository"
 	"fmt"
-	"github.com/dailyplan-api/pkg/repository"
 )
 
 func GetCredentialsByRole(role string) ([]string, error) {
