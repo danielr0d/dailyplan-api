@@ -72,15 +72,3 @@ func (q *HabitQueries) UpdateHabit(id uuid.UUID, h *models.Habit) error {
 
 	return nil
 }
-
-func (q *HabitQueries) DeleteHabit(id uuid.UUID) error {
-	query := `DELETE FROM habits WHERE id = $1`
-
-	_, err := q.Exec(query, id)
-
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
