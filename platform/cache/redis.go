@@ -6,11 +6,9 @@ import (
 	"strconv"
 
 	"github.com/danielr0d/dailyplan-api/pkg/utils"
-
-	"github.com/redis/go-redis/v9"
 )
 
-func RedisConnection() (*redis.Client, error){
+func RedisConnection() (*redis.Client, error) {
 	dbNumber, _ := strconv.Atoi(os.Getenv("REDIS_DB_NUMBER"))
 
 	redisConnURL, err := utils.ConnectionURLBuilder("redis")
@@ -21,7 +19,7 @@ func RedisConnection() (*redis.Client, error){
 	options := &redis.Options{
 		Addr:     redisConnURL,
 		Password: os.Getenv("REDIS_PASSWORD"),
-		DB: dbNumber,,
+		DB:       dbNumber,
 	}
 
 	return redis.NewClient(options), nil
