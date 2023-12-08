@@ -42,7 +42,7 @@ func GetHabits(c *fiber.Ctx) error {
 		"error":  false,
 		"msg":    nil,
 		"count":  len(habits),
-		"Habits": Habits,
+		"habits": habits,
 	})
 }
 
@@ -90,6 +90,6 @@ func GetHabit(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"error": false,
 		"msg":   nil,
-		"habit": Habit,
+		"habit": habit,
 	})
 }
